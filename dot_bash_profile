@@ -1,8 +1,17 @@
-PATH="$PATH:$HOME/.local/bin"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$HOME/.local/bin:$PATH"
+fi
+
+{{ if .is_mac -}}
+# enable homebrew shell usage
 eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end }}
+
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 alias ls="eza --git -g"
+alias ll="ls -laF"
 alias cdr="cd ~/repos"
 alias gs="git status"
 alias gco="git checkout"

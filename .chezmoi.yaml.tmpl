@@ -1,0 +1,21 @@
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $bwsAccessToken := promptStringOnce . "bwsAccessToken" "BWS Access Token"}}
+
+git:
+  autoCommit: true
+
+edit:
+  command: code
+  args:
+    - "--wait"
+
+data:
+  bwsAccessToken: {{ $bwsAccessToken | quote }}
+  email: {{ $email | quote }}
+  is_mac: {{ eq .chezmoi.os "darwin" }}
+  is_linux: {{ eq .chezmoi.os "linux" }}
+
+hooks:
+  read-source-state:
+    pre:
+      command: .local/share/chezmoi/.install-password-manager.sh
