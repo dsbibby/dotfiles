@@ -21,5 +21,5 @@ Linux)
 esac
 
 curl -o bws-cli.zip -Ls "https://github.com/bitwarden/sdk/releases/latest/download/${asset_name}"
-mkdir ~/.local/bin
+mkdir -p ~/.local/bin
 unzip bws-cli.zip -d ~/.local/bin

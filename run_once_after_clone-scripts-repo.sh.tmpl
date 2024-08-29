@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd {{ .repoDir }}{{ if not .is_personal }}/personal{{ end }}
+git clone git@github.com:dsbibby/dsb-scripts.git &> /dev/null || true
+cd dsb-scripts
+./install.sh
+
+git-config-subdirs

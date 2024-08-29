@@ -8,5 +8,6 @@ packages:
     casks:
       - brave-browser
       - rectangle
+      - amazon-workspaces
     vscode:
       - gitlab.gitlab-workflow

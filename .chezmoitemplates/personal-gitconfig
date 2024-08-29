@@ -1,0 +1,3 @@
+[user]
+	name = {{ .git_config.user | quote }}
+	email = {{ .git_config.email | quote }}

@@ -1,19 +1,36 @@
-{{- $email := promptStringOnce . "email" "Email address" -}}
-{{- $bwsAccessToken := promptStringOnce . "bwsAccessToken" "BWS Access Token"}}
+#chezmoi:template:left-delimiter=#{{
+
+#{{- $personalMachine := false -}}
+#{{- if eq (env "PERSONAL_MACHINE" | trim) "" -}}
+	#{{- if stdinIsATTY -}}
+		#{{- $personalMachine = promptBoolOnce . "is_personal" "Is this a personal machine (y/n)" -}}
+	#{{- end -}}
+#{{- else -}}
+	#{{- $personalMachine = eq (env "PERSONAL_MACHINE" | trim) "true" -}}
+#{{- end -}}
+
+#{{ $gitConfig := fromYaml (bitwardenSecrets "a362860c-485f-4da7-936e-b1da00f72ac1" (keyring "bws" "chezmoi")).value }}
+
+#{{- $email := $gitConfig.email -}}
+#{{- if not $personalMachine -}}
+#{{- $email = promptStringOnce . "email" "Email address" -}}
+#{{- end -}}
 
 git:
   autoCommit: true
 
 edit:
   command: code
-  args:
-    - "--wait"
 
 data:
-  bwsAccessToken: {{ $bwsAccessToken | quote }}
-  email: {{ $email | quote }}
-  is_mac: {{ eq .chezmoi.os "darwin" }}
-  is_linux: {{ eq .chezmoi.os "linux" }}
+  is_mac: #{{ eq .chezmoi.os "darwin" }}
+  is_linux: #{{ eq .chezmoi.os "linux" }}
+  is_personal: #{{ $personalMachine }}
+  git_config:
+    user: #{{ $gitConfig.user }}
+    email: #{{ $gitConfig.email }}
+  email: #{{ $email }}
+  repoDir: ~/repos
 
 hooks:
   read-source-state:

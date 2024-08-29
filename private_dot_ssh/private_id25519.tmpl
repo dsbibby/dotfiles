@@ -1,1 +1,1 @@
-{{ (bitwardenSecrets "80cc3e04-b43f-41e2-aa30-b1da00dcc1b0" .bwsAccessToken).value }}
+{{ (bitwardenSecrets "80cc3e04-b43f-41e2-aa30-b1da00dcc1b0" (keyring "bws" "chezmoi")).value }}
