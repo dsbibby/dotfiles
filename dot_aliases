@@ -1,0 +1,9 @@
+# .aliases
+
+alias ls="eza --git -g"
+alias ll="ls -laF"
+alias cdr="cd ~/repos"
+alias gs="git status"
+alias gco="git checkout"
+alias gcom="gco $(basename $(git symbolic-ref refs/remotes/origin/HEAD))"
+alias gcomp="gcom && git pull"
