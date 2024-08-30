@@ -9,11 +9,9 @@
 	#{{- $personalMachine = eq (env "PERSONAL_MACHINE" | trim) "true" -}}
 #{{- end -}}
 
-#{{ $gitConfig := fromYaml (bitwardenSecrets "a362860c-485f-4da7-936e-b1da00f72ac1" (keyring "bws" "chezmoi")).value }}
-
-#{{- $email := $gitConfig.email -}}
+#{{- $workEmail := "" -}}
 #{{- if not $personalMachine -}}
-#{{- $email = promptStringOnce . "email" "Email address" -}}
+#{{- $workEmail = promptStringOnce . "email" "Work email address" -}}
 #{{- end -}}
 
 git:
@@ -26,10 +24,7 @@ data:
   is_mac: #{{ eq .chezmoi.os "darwin" }}
   is_linux: #{{ eq .chezmoi.os "linux" }}
   is_personal: #{{ $personalMachine }}
-  git_config:
-    user: #{{ $gitConfig.user }}
-    email: #{{ $gitConfig.email }}
-  email: #{{ $email }}
+  work_email: #{{ $workEmail }}
   repoDir: ~/repos
 
 hooks:

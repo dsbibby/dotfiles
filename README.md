@@ -8,6 +8,8 @@ This repo uses [chezmoi](https://www.chezmoi.io/) to manage my macOS/Linux dotfi
   > If on linux, you may need to install some dependencies, e.g.:
   > ```bash
   > apt install curl git build-essential
+  > ... or ...
+  > yum install curl git gcc
   > ```
   > 
 

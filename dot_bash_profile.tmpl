@@ -3,12 +3,14 @@ if [ -d "$HOME/.local/bin" ]; then
 	PATH="$HOME/.local/bin:$PATH"
 fi
 
-{{ if .is_mac -}}
 # enable homebrew shell usage
+{{ if .is_mac -}}
 eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- else if .is_linux -}}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 {{- end }}
 
-[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+[[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 
 alias ls="eza --git -g"
 alias ll="ls -laF"
