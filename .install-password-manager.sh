@@ -1,9 +1,10 @@
-#!/bin/sh -x
+#!/bin/sh
 
 # exit immediately if bws is already in $PATH
 type bws >/dev/null 2>&1 && exit
 
 [ "$(uname -m)" = "x86_64" ] && arch="x86_64" || arch="aarch64"
+
 # Get Latest Release
 latest_version=$(curl -s https://raw.githubusercontent.com/bitwarden/sdk/main/crates/bws/Cargo.toml | grep -o '^version = ".*"' | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+")
 
@@ -28,6 +29,5 @@ rm bws-cli.zip
 if [ "$(uname -s)" = "Linux" ]; then
   # Patch bws to use brew glibc version
   brew install glibc patchelf 
-  patchelf --set-interpreter ${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2 --set-rpath ${HOMEBREW_CELLAR}/glibc/2.35_1/lib ~/.local/bin/bws
+  patchelf --set-interpreter "${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2" --set-rpath "${HOMEBREW_CELLAR}/glibc/2.35_1/lib ~/.local/bin/bws"
 fi
-

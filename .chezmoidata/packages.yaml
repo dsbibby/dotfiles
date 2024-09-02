@@ -1,7 +1,10 @@
 packages:
   all:
     brews:
+      - chezmoi
       - wget
+      - eza
+      - git
   darwin:
     brews:
       - git
