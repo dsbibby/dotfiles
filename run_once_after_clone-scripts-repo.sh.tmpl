@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd {{ .repoDir }}{{ if not .is_personal }}/personal{{ end }}
-git clone https://github.com/dsbibby/dsb-scripts.git &> /dev/null || true
+git clone -q git@github.com:dsbibby/dsb-scripts.git
 cd dsb-scripts
 git pull
 ./install.sh

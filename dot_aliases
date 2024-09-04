@@ -5,5 +5,11 @@ alias ll="ls -laF"
 alias cdr="cd ~/repos"
 alias gs="git status"
 alias gco="git checkout"
-alias gcom="gco $(basename $(git symbolic-ref refs/remotes/origin/HEAD))"
+alias gcom="gco git-master-branch-name"
 alias gcomp="gcom && git pull"
+
+function git-master-branch-name () {
+  local master_branch
+  master_branch="$(git symbolic-ref refs/remotes/origin/HEAD)"
+  basename "$master_branch"
+}

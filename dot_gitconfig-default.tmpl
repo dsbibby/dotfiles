@@ -7,3 +7,10 @@
 
 [url "git@github.com:dsbibby/"]
 	insteadOf = https://github.com/dsbibby/
+
+[credential]
+{{- if .is_mac }}
+	helper = keychain
+{{- else if .is_linux }}
+	helper = secreteservice
+{{ end }}
