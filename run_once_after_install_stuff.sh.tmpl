@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+oh-my-posh font install meslo
+
+{{- if .is_mac }}
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+{{ end }}

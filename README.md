@@ -26,11 +26,7 @@ This repo uses [chezmoi](https://www.chezmoi.io/) to manage my macOS/Linux dotfi
 - Generate and set an access token for Bitwarden Secrets
   - Log in to [Secrets Manager](https://vault.bitwarden.com/#/sm)
   - Create or select an existing Machine account and associate it with the `chezmoi` project
-  - Create an access token for the account, and paste it after running the following:
-    ```bash
-    chezmoi secret keyring set --service bws --user chezmoi
-    Value: xxxxxxxx
-    ```
+  - Create an access token for the account and copy it for the next step
 
 - Fetch and initialise the config:
   ```bash

@@ -1,5 +1,7 @@
 #chezmoi:template:left-delimiter=#{{
 
+#{{- $bwsToken := promptStringOnce . "bws_token" "Enter Bitwarden Secrets Access Token" -}}
+
 #{{- $personalMachine := false -}}
 #{{- if eq (env "PERSONAL_MACHINE" | trim) "" -}}
 	#{{- if stdinIsATTY -}}
@@ -11,7 +13,7 @@
 
 #{{- $workEmail := "" -}}
 #{{- if not $personalMachine -}}
-#{{- $workEmail = promptStringOnce . "email" "Work email address" -}}
+  #{{- $workEmail = promptStringOnce . "work_email" "Work email address" -}}
 #{{- end -}}
 
 git:
@@ -24,8 +26,9 @@ data:
   is_mac: #{{ eq .chezmoi.os "darwin" }}
   is_linux: #{{ eq .chezmoi.os "linux" }}
   is_personal: #{{ $personalMachine }}
-  work_email: #{{ $workEmail }}
+  work_email: #{{ $workEmail | quote }}
   repoDir: ~/repos
+  bws_token: #{{ $bwsToken | quote }}
 
 hooks:
   read-source-state:

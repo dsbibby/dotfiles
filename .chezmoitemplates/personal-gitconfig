@@ -1,4 +1,4 @@
-{{ $gitConfig := fromYaml (bitwardenSecrets "a362860c-485f-4da7-936e-b1da00f72ac1" (keyring "bws" "chezmoi")).value -}}
+{{ $gitConfig := fromYaml (bitwardenSecrets "a362860c-485f-4da7-936e-b1da00f72ac1" .bws_token).value -}}
 [user]
 	name = {{ $gitConfig.user | quote }}
 	email = {{ $gitConfig.email | quote }}
