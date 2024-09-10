@@ -1,7 +1,6 @@
 README.md
+*/iterm2.plist
 
 {{ if .is_personal }}
 repos/personal
 {{ end }}
-
-com.googlecode.iterm2.plist
