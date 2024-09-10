@@ -7,14 +7,15 @@ This repo uses [chezmoi](https://www.chezmoi.io/) to manage my macOS/Linux dotfi
 - Install [homebrew](https://brew.sh/):
   > If on linux, you may need to install some dependencies, e.g.:
   > ```bash
-  > apt install curl git build-essential
+  > apt install curl git
   > ... or ...
-  > yum install curl git gcc
+  > yum install curl git
   > ```
   > 
 
   ```bash
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(<brew_path>/bin/brew shellenv)"
   ```
 
 - Install [chezmoi](https://www.chezmoi.io/install/)

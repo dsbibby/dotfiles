@@ -5,12 +5,16 @@ packages:
       - wget
       - eza
       - git
+      - jandedobbeleer/oh-my-posh/oh-my-posh
+      - gcc
   darwin:
     brews:
       - git
     casks:
       - brave-browser
       - rectangle
-      - amazon-workspaces
+      - iterm2
+      - visual-studio-code
+      - docker
     vscode:
       - gitlab.gitlab-workflow
