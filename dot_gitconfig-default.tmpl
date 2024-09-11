@@ -10,7 +10,7 @@
 
 [credential]
 {{- if .is_mac }}
-	helper = keychain
+	helper = osxkeychain
 {{- else if .is_linux }}
 	helper = secretservice
 {{ end }}

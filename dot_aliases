@@ -1,11 +1,15 @@
 # .aliases
 
+# General aliases
 alias ls="eza --git -g"
 alias ll="ls -laF"
+alias watch="watch "
 alias cdr="cd ~/repos"
+
+# GIT Aliases
 alias gs="git status"
 alias gco="git checkout"
-alias gcom="gco git-master-branch-name"
+alias gcom="gco $(git-master-branch-name)"
 alias gcomp="gcom && git pull"
 
 function git-master-branch-name () {
@@ -13,3 +17,7 @@ function git-master-branch-name () {
   master_branch="$(git symbolic-ref refs/remotes/origin/HEAD)"
   basename "$master_branch"
 }
+
+# K8s Aliases
+alias k=kubectl
+complete -F __start_kubectl k
