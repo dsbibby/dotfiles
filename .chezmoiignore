@@ -1,5 +1,9 @@
 README.md
-iterm2.plist
+.config/iterm2/iterm2.plist
+
+{{ if not .is_mac }}
+.config/iterm2
+{{ end }}
 
 {{ if .is_personal }}
 repos/personal

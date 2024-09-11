@@ -7,6 +7,7 @@ packages:
       - git
       - jandedobbeleer/oh-my-posh/oh-my-posh
       - gcc
+  linux: {}
   darwin:
     brews:
       - git
