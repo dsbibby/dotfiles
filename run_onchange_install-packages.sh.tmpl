@@ -1,15 +1,22 @@
 #!/bin/bash
+# chezmoi:template:missing-key=zero
 
 brew bundle --no-lock --file=- <<EOF
+{{ range .packages.all.taps -}}
+  tap {{ . | quote }}
+{{ end -}}
+
 {{ range .packages.all.brews -}}
-brew {{ . | quote }}
+  brew {{ . | quote }}
 {{ end -}}
+
+{{ range (get .packages .chezmoi.os).brews -}}
+  brew {{ . | quote }}
+{{ end -}}
+
 {{ if eq .chezmoi.os "darwin" -}}
-{{ range .packages.darwin.brews -}}
-brew {{ . | quote }}
-{{ end -}}
 {{ range .packages.darwin.casks -}}
-cask {{ . | quote }}
+  cask {{ . | quote }}
 {{ end -}}
 {{ end -}}
 EOF

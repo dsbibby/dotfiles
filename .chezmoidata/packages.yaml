@@ -1,5 +1,7 @@
 packages:
   all:
+    taps:
+      - jandedobbeleer/oh-my-posh
     brews:
       - chezmoi
       - wget
@@ -10,7 +12,7 @@ packages:
   linux: {}
   darwin:
     brews:
-      - git
+      - gh
     casks:
       - brave-browser
       - rectangle

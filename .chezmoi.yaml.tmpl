@@ -34,3 +34,9 @@ hooks:
   read-source-state:
     pre:
       command: .local/share/chezmoi/.install-password-manager.sh
+
+merge:
+  command: "bash"
+  args:
+    - "-c"
+    - "cp {{ .Target }} {{ .Target }}.base && code --new-window --wait --merge {{ .Destination }} {{ .Target }} {{ .Target }}.base {{ .Source }}"
