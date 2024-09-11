@@ -29,5 +29,5 @@ rm bws-cli.zip
 if [ "$(uname -s)" = "Linux" ]; then
   # Patch bws to use brew glibc version
   brew install glibc patchelf 
-  patchelf --set-interpreter "${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2" --set-rpath "${HOMEBREW_CELLAR}/glibc/2.35_1/lib ~/.local/bin/bws"
+  patchelf --set-interpreter "${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2" --set-rpath "${HOMEBREW_CELLAR}/glibc/2.35_1/lib" "~/.local/bin/bws"
 fi
