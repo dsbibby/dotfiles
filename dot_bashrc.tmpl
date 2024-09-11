@@ -12,4 +12,4 @@ fi
 
 # Start ssh-agent to store SSH keys
 eval "$(ssh-agent -s)"
-ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+ssh-add {{ if .is_mac }}--apple-use-keychain{{ end }} ~/.ssh/id_ed25519

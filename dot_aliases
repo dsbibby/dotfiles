@@ -9,13 +9,14 @@ alias cdr="cd ~/repos"
 # GIT Aliases
 alias gs="git status"
 alias gco="git checkout"
-alias gcom="gco $(git-master-branch-name)"
+alias gc="git commit"
+alias gcm="git commit -m"
 alias gcomp="gcom && git pull"
 
-function git-master-branch-name () {
+function gcom() {
   local master_branch
   master_branch="$(git symbolic-ref refs/remotes/origin/HEAD)"
-  basename "$master_branch"
+  gco $(basename "$master_branch")
 }
 
 # K8s Aliases
