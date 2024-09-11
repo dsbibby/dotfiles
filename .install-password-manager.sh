@@ -22,12 +22,12 @@ Linux)
 esac
 
 curl -o bws-cli.zip -Ls "https://github.com/bitwarden/sdk/releases/latest/download/${asset_name}"
-mkdir -p ~/.local/bin
-unzip bws-cli.zip -d ~/.local/bin
+mkdir -p "${HOME}/.local/bin"
+unzip bws-cli.zip -d "${HOME}/.local/bin"
 rm bws-cli.zip
 
 if [ "$(uname -s)" = "Linux" ]; then
   # Patch bws to use brew glibc version
   brew install glibc patchelf 
-  patchelf --set-interpreter "${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2" --set-rpath "${HOMEBREW_CELLAR}/glibc/2.35_1/lib" "~/.local/bin/bws"
+  patchelf --set-interpreter "${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2" --set-rpath "${HOMEBREW_CELLAR}/glibc/2.35_1/lib" "${HOME}/.local/bin/bws"
 fi
