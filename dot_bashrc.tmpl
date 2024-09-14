@@ -7,9 +7,11 @@ fi
 
 # User specific aliases and functions
 if [ -f ~/.aliases ]; then
-	. ~/.aliases
+  . ~/.aliases
 fi
 
-# Start ssh-agent to store SSH keys
-eval "$(ssh-agent -s)"
-ssh-add {{ if .is_mac }}--apple-use-keychain{{ end }} ~/.ssh/id_ed25519
+# load local config if present
+if [ -f ~/.bashrc-local ]; then
+  . ~/.bashrc-local
+fi
+

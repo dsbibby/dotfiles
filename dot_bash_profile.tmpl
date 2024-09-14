@@ -20,8 +20,12 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # enable oh-my-posh
 if command -v oh-my-posh &> /dev/null; then
-	eval "$(oh-my-posh init bash)"
+	eval "$(oh-my-posh init bash --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/agnoster.minimal.omp.json')"
 fi
 
 # enable bash_completion
 [[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+
+# Start ssh-agent to store SSH keys
+eval "$(ssh-agent -s)"
+ssh-add  ~/.ssh/id_ed25519
