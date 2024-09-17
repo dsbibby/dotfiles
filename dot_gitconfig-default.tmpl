@@ -12,5 +12,5 @@
 {{- if .is_mac }}
 	helper = osxkeychain
 {{- else if .is_linux }}
-	helper = secret
+	helper = store
 {{ end }}
