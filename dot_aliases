@@ -12,6 +12,7 @@ alias gco="git checkout"
 alias gc="git commit"
 alias gcm="git commit -m"
 alias gcomp="gcom && git pull"
+alias gmm="gcomp && gco - && git merge $(git name-rev @{-1} --name-only)"
 alias gnew="gcomp && gco -b"
 
 function gcom() {
