@@ -1,14 +1,16 @@
 packages:
   all:
-    taps:
-      - jandedobbeleer/oh-my-posh
     brews:
       - chezmoi
       - wget
       - eza
       - git
-      - jandedobbeleer/oh-my-posh/oh-my-posh
+      - oh-my-posh
       - gcc
+      - neovim
+      - ag
+      - fzf
+      - ripgrep
   linux: {}
   darwin:
     brews:
