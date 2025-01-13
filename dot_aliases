@@ -8,17 +8,23 @@ alias cdr="cd ~/repos"
 
 # GIT Aliases
 alias gs="git status"
-alias gco="git checkout"
+alias gp="git push"
 alias gc="git commit"
 alias gcm="git commit -m"
+alias gco="git checkout"
 alias gcomp="gcom && git pull"
-alias gmm="gcomp && gco - && git merge $(git name-rev @{-1} --name-only)"
 alias gnew="gcomp && gco -b"
 
 function gcom() {
   local master_branch
   master_branch="$(git symbolic-ref refs/remotes/origin/HEAD)"
   gco $(basename "$master_branch")
+}
+
+function gmm() {
+  local master_branch
+  master_branch="$(git symbolic-ref refs/remotes/origin/HEAD)"
+  gcomp && gco - && git merge $(basename "$master_branch")
 }
 
 # K8s Aliases
