@@ -1,8 +1,9 @@
 #!/bin/sh
-set -xeuo pipefail
+set -euo pipefail
 # exit immediately if bws is already in $PATH
 type bws >/dev/null 2>&1 && exit
 
+set -x
 [ "$(uname -m)" = "x86_64" ] && arch="x86_64" || arch="aarch64"
 
 # Get Latest Release

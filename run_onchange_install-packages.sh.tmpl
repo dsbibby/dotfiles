@@ -1,7 +1,7 @@
 #!/bin/bash
 # chezmoi:template:missing-key=zero
 
-brew bundle --no-lock --file=- <<EOF
+brew bundle --file=- <<EOF
 {{ range .packages.all.taps -}}
   tap {{ . | quote }}
 {{ end -}}
