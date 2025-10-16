@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -xeuo pipefail
 # exit immediately if bws is already in $PATH
 type bws >/dev/null 2>&1 && exit
 
@@ -21,13 +21,13 @@ Linux)
     ;;
 esac
 
-curl -o bws-cli.zip -Ls "https://github.com/bitwarden/sdk/releases/latest/download/${asset_name}"
+curl -o bws-cli.zip -Ls "https://github.com/bitwarden/sdk-sm/releases/download/bws-v${latest_version}/${asset_name}"
 mkdir -p "${HOME}/.local/bin"
 unzip bws-cli.zip -d "${HOME}/.local/bin"
 rm bws-cli.zip
 
-if [ "$(uname -s)" = "Linux" ]; then
+# if [ "$(uname -s)" = "Linux" ]; then
   # Patch bws to use brew glibc version
-  brew install glibc patchelf 
-  patchelf --set-interpreter "${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2" --set-rpath "${HOMEBREW_CELLAR}/glibc/2.35_1/lib" "${HOME}/.local/bin/bws"
-fi
+#  brew install glibc patchelf 
+#  patchelf --set-interpreter "${HOMEBREW_CELLAR}/glibc/2.35_1/lib/ld-linux-x86-64.so.2" --set-rpath "${HOMEBREW_CELLAR}/glibc/2.35_1/lib" "${HOME}/.local/bin/bws"
+#fi
